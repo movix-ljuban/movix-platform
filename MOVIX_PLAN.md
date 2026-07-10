@@ -43,7 +43,14 @@ Klijenti će kasnije imati sopstveni nalog i aplikaciju preko koje šalju zahtev
 - Osnovni profil firme S011
 - Probna tabela zahteva
 - CSS bez prijavljenih grešaka
-
+- Supabase baza podataka povezana
+- Tabela companies
+- Tabela users
+- Tabela clients
+- Tabela client_addresses
+- Tabela client_contacts
+- Povezane foreign key veze između tabela
+- Podržan multi-company model
 ---
 
 ## Važna napomena
@@ -74,11 +81,14 @@ Još nisu urađeni:
 - [x] Kreiranje React projekta
 - [x] Osnovne komponente
 - [x] Početni vizuelni prototip
-- [ ] Pokretanje Git repozitorijuma
-- [ ] Prva sačuvana verzija projekta
+- - [x] Pokretanje Git repozitorijuma
+- [x] Prva sačuvana verzija projekta
+- [x] GitHub nalog
+- [x] GitHub repozitorijum
+- [x] Projekat poslat na GitHub
 - [ ] Izbor baze podataka
-- [ ] Definisanje strukture podataka
-- [ ] Definisanje više nezavisnih firmi
+- [x] Definisanje strukture podataka
+- [x] Definisanje više nezavisnih firmi
 
 ### Faza 2 — Bezbednost i korisnici
 
@@ -138,5 +148,8 @@ Još nisu urađeni:
 ---
 
 ## Sledeći konkretan korak
+Sledeći konkretan korak:
 
-Pokrenuti Git repozitorijum i napraviti prvu sigurnu verziju trenutnog projekta.
+- Napraviti tabelu deliveries
+- Dizajnirati kompletan tok jedne dostave
+- Povezati klijenta, adresu i kontakt sa dostavom
