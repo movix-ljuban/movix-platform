@@ -51,7 +51,16 @@ Klijenti će kasnije imati sopstveni nalog i aplikaciju preko koje šalju zahtev
 - Tabela client_contacts
 - Povezane foreign key veze između tabela
 - Podržan multi-company model
----
+---- Tabela deliveries
+- Povezane deliveries foreign key veze sa companies, clients, client_addresses, client_contacts i users
+- `.env` podešen sa Supabase URL adresom i publishable ključem
+- Lokalni Vite server uspešno pokrenut preko `npm.cmd run dev`
+- Aplikacija uspešno otvorena na `localhost:5173`
+- `App.jsx` podešen da prikazuje samo trenutno izabranu stranicu
+- Funkcionalna navigacija kroz Sidebar
+- Klik na Dashboard, Zahtevi, Dostave, Kuriri, Klijenti i Firma menja prikaz stranice
+- Aktivna stavka menija vizuelno označena
+- Sidebar dugmad stilizovana bez belih podrazumevanih polja
 
 ## Važna napomena
 
@@ -59,12 +68,10 @@ Trenutni podaci su samo probni i ručno upisani u kod.
 
 Još nisu urađeni:
 
-- baza podataka
 - pravi korisnički nalozi
 - login
 - registracija firmi
-- zaštita podataka između firmi
-- navigacija između stranica
+- zaštita podataka između firmi- navigacija između stranica
 - čuvanje zahteva
 - uređivanje i brisanje podataka
 - dodela kurira
@@ -86,40 +93,41 @@ Još nisu urađeni:
 - [x] GitHub nalog
 - [x] GitHub repozitorijum
 - [x] Projekat poslat na GitHub
-- [ ] Izbor baze podataka
+- [x] Izbor baze podataka
 - [x] Definisanje strukture podataka
 - [x] Definisanje više nezavisnih firmi
 
 ### Faza 2 — Bezbednost i korisnici
 
-- [ ] Login
-- [ ] Registracija firme
+- [x] Login
+- [x] Registracija firme
 - [ ] Korisničke uloge
 - [ ] Administrator platforme
-- [ ] Vlasnik firme
+- [x] Vlasnik firme
 - [ ] Dispečer
 - [ ] Kurir
 - [ ] Klijent
-- [ ] Odvajanje podataka svake firme
+- [X] Odvajanje podataka svake firme
 
 ### Faza 3 — Osnovna navigacija
 
-- [ ] Dashboard stranica
-- [ ] Zahtevi stranica
-- [ ] Dostave stranica
-- [ ] Kuriri stranica
-- [ ] Klijenti stranica
-- [ ] Firma stranica
+- [x] Dashboard stranica
+- [x] Zahtevi stranica
+- [x] Dostave stranica
+- [X] Kuriri stranica
+- [X] Klijenti stranica
+- [X] Firma stranica
 - [ ] Statistika stranica
 - [ ] Podešavanja stranica
 
 ### Faza 4 — Poslovni moduli
 
-- [ ] Unos zahteva
-- [ ] Čuvanje zahteva u bazi
-- [ ] Pretvaranje zahteva u dostavu
-- [ ] Dodela kurira
-- [ ] Statusi dostave
+- [x] Unos zahteva
+- [x] Čuvanje zahteva u bazi
+  [x] ucitavanje zahteva iz baze
+- [x] Pretvaranje zahteva u dostavu
+- [x] Dodela kurira
+- [x] Statusi dostave
 - [ ] Vreme preuzimanja
 - [ ] Vreme isporuke
 - [ ] Plaćanje
