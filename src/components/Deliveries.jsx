@@ -54,6 +54,7 @@ function Deliveries() {
         price,
         status,
         payment_method,
+        payment_payer,
         note,
         pickup_from_at,
 pickup_to_at,
@@ -226,7 +227,21 @@ const updateDeliveryStatus = async (deliveryId, status) => {
   <option value="delivered">Isporučeno</option>
 </select>
                   </td>
-                  <td>{delivery.payment_method || "-"}</td>
+                  <td>
+  <div className="request-payment">
+    <strong>
+      {({ cash: "KEŠ", invoice: "RAČUN" })[
+        delivery.payment_method
+      ] || "—"}
+    </strong>
+
+    <span>
+      {({ sender: "Pošiljalac", recipient: "Primalac" })[
+        delivery.payment_payer
+      ] || "—"}
+    </span>
+  </div>
+</td>
                   <td>
   <select
     value={delivery.courier_id || ""}

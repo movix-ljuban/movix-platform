@@ -128,9 +128,9 @@ Još nisu urađeni:
 - [x] Pretvaranje zahteva u dostavu
 - [x] Dodela kurira
 - [x] Statusi dostave
-- [ ] Vreme preuzimanja
-- [ ] Vreme isporuke
-- [ ] Plaćanje
+- [x] Vreme preuzimanja
+- [x] Vreme isporuke
+- [x] Plaćanje (keš/račun + pošiljalac/primalac)
 - [ ] Obračun kurira
 - [ ] Izveštaji i statistika
 

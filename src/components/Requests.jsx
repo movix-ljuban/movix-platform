@@ -174,6 +174,8 @@ const [newRequest, setNewRequest] = useState({
   delivery_contact_name: "",
   delivery_phone: "",
   price: "",
+  payment_method: "",
+payment_payer: "",
   pickup_from_at: getDefaultDeliveryDateTime(),
 pickup_to_at: getDateTimePlusMinutes(60),
 delivery_from_at: getDateTimePlusMinutes(120),
@@ -322,6 +324,7 @@ delivery_to_at: request.delivery_to_at || null,
 price: Number(request.price),
 status: "new",
 payment_method: request.payment_method || null,
+payment_payer: request.payment_payer || null,
 note: request.note || null,
 is_active: true,
         },
@@ -356,7 +359,9 @@ if (
     !newRequest.client ||
     !newRequest.pickup ||
     !newRequest.delivery ||
-    !newRequest.price
+    !newRequest.price ||
+    !newRequest.payment_method ||
+!newRequest.payment_payer
   ) {
     alert("Popuni sva polja.");
     return;
@@ -377,6 +382,8 @@ const { data, error } = await supabase
   delivery_phone: newRequest.delivery_phone,
 
   price: Number(newRequest.price),
+  payment_method: newRequest.payment_method,
+payment_payer: newRequest.payment_payer,
   pickup_from_at: newRequest.pickup_from_at || null,
 pickup_to_at: newRequest.pickup_to_at || null,
 delivery_from_at: newRequest.delivery_from_at || null,
@@ -406,6 +413,8 @@ setNewRequest({
   delivery_contact_name: "",
   delivery_phone: "",
   price: "",
+  payment_method: "",
+payment_payer: "",
   pickup_from_at: getDefaultDeliveryDateTime(),
   pickup_to_at: getDateTimePlusMinutes(60),
   delivery_from_at: getDateTimePlusMinutes(120),
@@ -512,6 +521,67 @@ setNewRequest({
     setNewRequest({ ...newRequest, price: e.target.value })
   }
 />
+<div className="payment-section">
+  <div className="payment-group">
+    <span className="payment-label">Način plaćanja</span>
+
+    <div className="payment-options">
+      <button
+        type="button"
+        className={`payment-option ${
+          newRequest.payment_method === "cash" ? "active" : ""
+        }`}
+        onClick={() =>
+          setNewRequest({ ...newRequest, payment_method: "cash" })
+        }
+      >
+        KEŠ
+      </button>
+
+      <button
+        type="button"
+        className={`payment-option ${
+          newRequest.payment_method === "invoice" ? "active" : ""
+        }`}
+        onClick={() =>
+          setNewRequest({ ...newRequest, payment_method: "invoice" })
+        }
+      >
+        RAČUN
+      </button>
+    </div>
+  </div>
+
+  <div className="payment-group">
+    <span className="payment-label">Dostavu plaća</span>
+
+    <div className="payment-options">
+      <button
+        type="button"
+        className={`payment-option ${
+          newRequest.payment_payer === "sender" ? "active" : ""
+        }`}
+        onClick={() =>
+          setNewRequest({ ...newRequest, payment_payer: "sender" })
+        }
+      >
+        POŠILJALAC
+      </button>
+
+      <button
+        type="button"
+        className={`payment-option ${
+          newRequest.payment_payer === "recipient" ? "active" : ""
+        }`}
+        onClick={() =>
+          setNewRequest({ ...newRequest, payment_payer: "recipient" })
+        }
+      >
+        PRIMALAC
+      </button>
+    </div>
+  </div>
+</div>
 <div className="delivery-datetime-row">
   <DateTimeRange
     title="Термин преузимања"
@@ -569,6 +639,7 @@ setNewRequest({
               <th>Preuzimanje</th>
               <th>Isporuka</th>
               <th>Cena</th>
+              <th>Plaćanje</th>
               <th>Status</th>
               <th>Akcija</th>
             </tr>
@@ -611,6 +682,21 @@ setNewRequest({
   </div>
 </td>
                 <td>{request.price}</td>
+                <td>
+  <div className="request-payment">
+    <strong>
+      {({ cash: "KEŠ", invoice: "RAČUN" })[
+        request.payment_method
+      ] || "—"}
+    </strong>
+
+    <span>
+      {({ sender: "Pošiljalac", recipient: "Primalac" })[
+        request.payment_payer
+      ] || "—"}
+    </span>
+  </div>
+</td>
                 <td>
                   <span className="status-badge">{request.status}</span>
                 </td>
